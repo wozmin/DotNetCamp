@@ -5,7 +5,7 @@ using GamesServer.DAL.Interfaces;
 
 namespace GamesServer.DAL.Repositories
 {
-    class UserRepository:RepositoryBase<User>,IUserRepository
+    public class UserRepository :RepositoryBase<User>,IUserRepository
     {
         public UserRepository(ApplicationContext context):base(context)
         {

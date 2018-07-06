@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GamesServer.DAL.Interfaces
 {
-    interface IUnitOfWork
+    public interface IUnitOfWork
     {
         IUserRepository Users { get;}
         IGameRepository Games { get;}

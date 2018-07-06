@@ -6,7 +6,7 @@ using System.Text;
 
 namespace GamesServer.DAL.Repositories
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private IUserRepository _users;
         private IGameRepository _games;

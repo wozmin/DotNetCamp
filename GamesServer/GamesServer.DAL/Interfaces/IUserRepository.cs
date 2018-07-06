@@ -3,7 +3,7 @@
 
 namespace GamesServer.DAL.Interfaces
 {
-    interface IUserRepository:IRepositoryBase<User>
+    public interface IUserRepository :IRepositoryBase<User>
     {
     }
 }

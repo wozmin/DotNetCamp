@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GamesServer.DAL.Enteties
 {
-    class GameUser
+    public class GameUser
     {
         public int Id { get; set; }
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GamesServer.DAL.Interfaces
 {
-    interface IRepositoryBase<T>
+    public interface IRepositoryBase<T>
     {
         IEnumerable<T> GetAll();
         IEnumerable<T> FindByCondition(Expression<Func<T,bool>> expression);

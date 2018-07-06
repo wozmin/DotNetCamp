@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace GamesServer.Services.Controllers
 {
@@ -17,8 +15,8 @@ namespace GamesServer.Services.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        public UserInfoDTO Get(int id)
         {
             return "value";
         }

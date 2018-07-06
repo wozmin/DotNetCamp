@@ -17,27 +17,27 @@ namespace GamesServer.DAL.Repositories
             Db = context;
         }
 
-        public IEnumerable<T> FindByCondition(Expression<Func<T, bool>> expression)
+        public virtual IEnumerable<T> FindByCondition(Expression<Func<T, bool>> expression)
         {
             return Db.Set<T>().Where(expression);
         }
 
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             return Db.Set<T>();
         }
 
-        public void Create(T entity)
+        public virtual void Create(T entity)
         {
             Db.Set<T>().Add(entity);
         }
 
-        public void Delete(T entity)
+        public virtual void Delete(T entity)
         {
             Db.Set<T>().Remove(entity);
         }
 
-        public void Update(T entity)
+        public virtual void Update(T entity)
         {
             Db.Entry(entity).State = EntityState.Modified;
         }

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace GamesServer.DAL.Repositories
 {
-    class GameRepository:RepositoryBase<Game>,IGameRepository
+    public class GameRepository :RepositoryBase<Game>,IGameRepository
     {
         public GameRepository(ApplicationContext context):base(context)
         {
