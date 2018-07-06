@@ -1,8 +1,5 @@
 ﻿using GamesServer.DAL.EF;
 using GamesServer.DAL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GamesServer.DAL.Repositories
 {

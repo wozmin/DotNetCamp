@@ -1,16 +1,18 @@
 ﻿using GamesServer.DAL.EF;
 using GamesServer.DAL.Enteties;
 using GamesServer.DAL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace GamesServer.DAL.Repositories
 {
     public class GameRepository :RepositoryBase<Game>,IGameRepository
     {
+        private  ApplicationContext db { get; }
         public GameRepository(ApplicationContext context):base(context)
         {
+            db = context;
         }
+
+        
     }
 }

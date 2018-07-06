@@ -1,10 +1,14 @@
 ﻿using GamesServer.BLL.DTO;
+using GamesServer.DAL.Enteties;
 
 
 namespace GamesServer.BLL.Interfaces
 {
-    interface IUserService
+    public interface IUserService
     {
-        UserDTO GetHighScoreUser();
+        void CreateUser(User user);
+        void DeleteUser(User user);
+        UserDTO GetUser(int id);
+
     }
 }

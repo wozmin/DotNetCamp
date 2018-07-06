@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
 using GamesServer.BLL.DTO;
 using GamesServer.DAL.Enteties;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GamesServer.BLL.MapperProfiles
 {

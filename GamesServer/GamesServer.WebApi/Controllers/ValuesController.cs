@@ -1,21 +1,15 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using GamesServer.BLL.DTO;
 
-namespace GamesServer.Services.Controllers
+namespace GamesServer.WebApi.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        // GET api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
         // GET api/values/5
         [HttpGet]
-        public UserInfoDTO Get(int id)
+        public string Get(int id)
         {
             return "value";
         }

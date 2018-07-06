@@ -1,8 +1,5 @@
 ﻿using GamesServer.DAL.Enteties;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GamesServer.DAL.EF
 {
@@ -14,6 +11,23 @@ namespace GamesServer.DAL.EF
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options):base(options)
         {
+            Database.EnsureCreated();
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<GameUser>()
+                .HasKey(t => new { t.GameId, t.UserId });
+
+            modelBuilder.Entity<GameUser>()
+                .HasOne(gu => gu.User)
+                .WithMany(g => g.GameUsers)
+                .HasForeignKey(gu => gu.UserId);
+
+            modelBuilder.Entity<GameUser>()
+                .HasOne(gu => gu.Game)
+                .WithMany(g => g.GameUsers)
+                .HasForeignKey(gu => gu.GameId);
         }
 
     }
