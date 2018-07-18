@@ -1,6 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using GamesServer.BLL.DTO;
+using GamesServer.BLL.Exceptions;
 using GamesServer.BLL.Interfaces;
 using GamesServer.DAL.EF;
 using GamesServer.DAL.Enteties;
@@ -19,8 +20,9 @@ namespace GamesServer.BLL.Services
         }
 
 
-        public void CreateUser(User user)
+        public void CreateUser(UserInfoDTO userDTO)
         {
+            User user = Mapper.Map<UserInfoDTO, User>(userDTO);
             if (user == null)
             {
                 throw new  Exception();
@@ -29,8 +31,9 @@ namespace GamesServer.BLL.Services
             Database.Save();
         }
 
-        public void DeleteUser(User user)
+        public void DeleteUser(UserInfoDTO userDTO)
         {
+            User user = Mapper.Map<UserInfoDTO, User>(userDTO);
             if (user == null)
             {
                 throw new Exception();
@@ -40,7 +43,23 @@ namespace GamesServer.BLL.Services
             
         }
 
-        public UserDTO GetUser(int id)
+        public UserDTO HighScoreUser(Guid gameId)
+        {
+            User user = Database.Users.GetHighScoreUser(gameId);
+            if (user == null)
+            {
+                throw  new ValidationException("Object is not valid","");
+            }
+
+            return Mapper.Map<User,UserDTO>(user);
+        }
+
+        public bool isUserExists(Guid id)
+        {
+            return Database.Users.GetUser(id) != null;
+        }
+
+        public UserDTO GetUser(Guid id)
         {
             var user = Database.Users.GetUser(id);
             if (user == null)

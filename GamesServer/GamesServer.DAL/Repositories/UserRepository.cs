@@ -16,12 +16,14 @@ namespace GamesServer.DAL.Repositories
             db = context;
         }
 
-        public User GetHighScoreUser()
+        public User GetHighScoreUser(Guid gameId)
         {
-            throw new NotImplementedException();
+            int maxScore = db.GameUsers.Max(u => u.Score);
+            User user = db.GameUsers.FirstOrDefault(gu => gu.GameId == gameId && gu.Score == maxScore).User;
+            return user;
         }
 
-        public User GetUser(int id)
+        public User GetUser(Guid id)
         {
             return db.Users.FirstOrDefault(u => u.Id == id);
         }

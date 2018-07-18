@@ -26,7 +26,7 @@ namespace GamesServer.WebApi
             services.ConfigureSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             services.AddMvc();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IUserService,UserService>();
+            services.AddScoped<IUserService, UserService>();
             services.AddAutoMapper();
         }
 
@@ -35,7 +35,7 @@ namespace GamesServer.WebApi
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
             }
 
             app.UseMvc();

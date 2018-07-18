@@ -46,9 +46,9 @@ namespace GamesServer.DAL.Repositories
             }
         }
 
-        public void Save()
+        public bool Save()
         {
-            _context.SaveChanges();
+           return _context.SaveChanges() >= 0;
         }
     }
 }

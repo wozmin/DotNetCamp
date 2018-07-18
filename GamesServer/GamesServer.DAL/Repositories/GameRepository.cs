@@ -1,4 +1,6 @@
-﻿using GamesServer.DAL.EF;
+﻿using System;
+using System.Linq;
+using GamesServer.DAL.EF;
 using GamesServer.DAL.Enteties;
 using GamesServer.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +15,10 @@ namespace GamesServer.DAL.Repositories
             db = context;
         }
 
-        
+
+        public Game GetGame(Guid id)
+        {
+            return db.Games.FirstOrDefault(g => g.Id == id);
+        }
     }
 }

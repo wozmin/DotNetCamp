@@ -5,6 +5,6 @@
         IUserRepository Users { get;}
         IGameRepository Games { get;}
         IGameUserRepository GameUsers { get;}
-        void Save();
+        bool Save();
     }
 }
