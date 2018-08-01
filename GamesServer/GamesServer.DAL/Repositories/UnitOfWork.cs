@@ -5,7 +5,6 @@ namespace GamesServer.DAL.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private IUserRepository _users;
         private IGameRepository _games;
         private IGameUserRepository _gameUsers;
         private ApplicationContext _context;
@@ -15,16 +14,6 @@ namespace GamesServer.DAL.Repositories
             _context = context;
         }
 
-        public IUserRepository Users {
-            get
-            {
-                if (_users == null)
-                {
-                    _users = new UserRepository(_context);
-                }
-                return _users;
-            }
-        }
         public IGameRepository Games {
             get {
                 if(_games == null)

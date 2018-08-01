@@ -4,9 +4,9 @@ using System.Text;
 
 namespace GamesServer.BLL.DTO
 {
-    public class ScoresByUserDTO
+    public class ScoresByGameDTO
     {
-        public string Game { get; set; }
+        public string User { get; set; }
         public DateTime Date { get; set; }
         public int Score { get; set; }
     }

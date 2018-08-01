@@ -15,6 +15,8 @@ namespace GamesServer.BLL.MapperProfiles
             CreateMap<ScoresDTO, GameUser>();
             CreateMap<IEnumerable<GameUser>, IEnumerable<ScoresDTO>>();
             CreateMap<SaveScoreDTO, GameUser>().ForMember(gu=>gu.Date,val=>new DateTime());
+            CreateMap<GameUser, ScoresByUserDTO>();
+            CreateMap<GameUser, ScoresByGameDTO>();
         }
     }
 }

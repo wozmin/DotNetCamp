@@ -1,28 +1,28 @@
 ﻿using GamesServer.DAL.Enteties;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace GamesServer.DAL.EF
 {
-    public class ApplicationContext:DbContext
+    public class ApplicationContext:IdentityDbContext
     {
-        public DbSet<User> Users { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<GameUser> GameUsers { get; set; }
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options):base(options)
         {
-            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<GameUser>()
-                .HasKey(t => new { t.GameId, t.UserId });
+                .HasKey(t => new { t.GameId, t.ApplicationUserId });
 
             modelBuilder.Entity<GameUser>()
                 .HasOne(gu => gu.User)
                 .WithMany(g => g.GameUsers)
-                .HasForeignKey(gu => gu.UserId);
+                .HasForeignKey(gu => gu.ApplicationUserId);
 
             modelBuilder.Entity<GameUser>()
                 .HasOne(gu => gu.Game)

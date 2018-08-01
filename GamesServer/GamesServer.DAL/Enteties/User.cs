@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
 
 namespace GamesServer.DAL.Enteties
 {
-    public class User
+    public class ApplicationUser:IdentityUser<string>
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
         public List<GameUser> GameUsers { get; set; }
 
-        public User()
+        public ApplicationUser()
         {
             GameUsers = new List<GameUser>();
         }

@@ -8,8 +8,8 @@ namespace GamesServer.BLL.MapperProfiles
     {
         public UserProfile()
         {
-            CreateMap<User, UserDTO>();
-            CreateMap<UserDTO, User>();
+            CreateMap<ApplicationUser, UserDTO>();
+            CreateMap<UserDTO, ApplicationUser>();
         }
     }
 }
