@@ -1,16 +1,20 @@
-﻿using GamesServer.DAL.Enteties;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using GamesServer.DAL.Enteties;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace GamesServer.DAL.EF
 {
-    public class ApplicationContext:IdentityDbContext
+    public class ApplicationContext:IdentityDbContext<ApplicationUser>
     {
         public DbSet<Game> Games { get; set; }
         public DbSet<GameUser> GameUsers { get; set; }
 
-        public ApplicationContext(DbContextOptions<ApplicationContext> options):base(options)
+        public ApplicationContext(DbContextOptions options):base(options)
         {
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -29,6 +33,5 @@ namespace GamesServer.DAL.EF
                 .WithMany(g => g.GameUsers)
                 .HasForeignKey(gu => gu.GameId);
         }
-
     }
 }

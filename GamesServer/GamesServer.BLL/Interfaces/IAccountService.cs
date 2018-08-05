@@ -12,7 +12,7 @@ namespace GamesServer.BLL.Interfaces
     public interface IAccountService
     {
         string GenerateJwtToken(string email, ApplicationUser user);
-        bool IsUserExists(Guid userId);
-
+        bool IsUserExists(string userId);
+        
     }
 }

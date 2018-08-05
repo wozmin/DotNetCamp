@@ -9,7 +9,7 @@ namespace GamesServer.WebApi.Controllers
     {
         // GET api/values/5
         [HttpGet]
-        public string Get(int id)
+        public string Get()
         {
             return "value";
         }

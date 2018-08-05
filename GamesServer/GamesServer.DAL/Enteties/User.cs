@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace GamesServer.DAL.Enteties
 {
-    public class ApplicationUser:IdentityUser<string>
+    public class ApplicationUser:IdentityUser
     {
         public List<GameUser> GameUsers { get; set; }
 

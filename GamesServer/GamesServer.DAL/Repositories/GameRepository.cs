@@ -10,6 +10,7 @@ namespace GamesServer.DAL.Repositories
     public class GameRepository :RepositoryBase<Game>,IGameRepository
     {
         private  ApplicationContext db { get; }
+
         public GameRepository(ApplicationContext context):base(context)
         {
             db = context;

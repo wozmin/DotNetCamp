@@ -9,20 +9,28 @@ namespace GamesServer.WebApi.Controllers
     [Route("api/score")]
     public class ScoreController : Controller
     {
+        private readonly IAccountService _accountService;
         private readonly IGameService _gameService;
         private readonly IScoreService _scoreService;
-        public ScoreController(IGameService gameService,IScoreService scoreService)
+        public ScoreController(IGameService gameService,IScoreService scoreService,IAccountService accountService)
         {
             _gameService = gameService;
             _scoreService = scoreService;
+            _accountService = accountService;
         }
 
-        [HttpPost]
-        public IActionResult SaveScore (Guid gameId,Guid userId)
+
+        [HttpPost("{gameId}/{userId}")]
+        public IActionResult SaveScore (Guid gameId,string userId)
         {
             if (!_gameService.isGameExists(gameId))
             {
-                return BadRequest();
+                return NotFound("Game not found");
+            }
+
+            if (!_accountService.IsUserExists(userId))
+            {
+                return NotFound($"User with id {userId} not found");
             }
             _scoreService.SaveScore(new SaveScoreDTO{GameId = gameId,UserId = userId});
             return Ok();
@@ -33,7 +41,7 @@ namespace GamesServer.WebApi.Controllers
         {
             if (!_gameService.isGameExists(gameId))
             {
-                return BadRequest("Game is not exists");
+                return NotFound("Game is not exists");
             }
 
             return Ok(_scoreService.GetScoresByGame(gameId));
@@ -42,6 +50,10 @@ namespace GamesServer.WebApi.Controllers
         [HttpGet("user/{userId}")]
         public IActionResult GetScoresByUser(string userId)
         {
+            if (!_accountService.IsUserExists(userId))
+            {
+                return NotFound($"User with id {userId} not found");
+            }
             return Ok(_scoreService.GetScoresByUser(userId));
         }
 

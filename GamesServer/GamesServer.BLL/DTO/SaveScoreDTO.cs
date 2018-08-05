@@ -7,7 +7,7 @@ namespace GamesServer.BLL.DTO
     public class SaveScoreDTO
     {
         public Guid GameId { get; set; }
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
         public int Score { get; set; }
     }
 }

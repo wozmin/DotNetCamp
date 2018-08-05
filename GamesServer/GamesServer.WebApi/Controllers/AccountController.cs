@@ -64,7 +64,7 @@ namespace GamesServer.WebApi.Controllers
                 return Ok(token);
             }
 
-            return BadRequest();
+            return BadRequest(result.Errors);
         }
-    }
+     }
 }

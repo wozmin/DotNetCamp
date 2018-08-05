@@ -21,6 +21,7 @@ namespace GamesServer.WebApi
         {
             services.ConfigureIdentity();
             services.ConfigureSqlServer(Configuration);
+            services.ConfigureJwtTokens(Configuration);
             services.ConfigureServices();
             services.AddAutoMapper();
             services.AddMvc();

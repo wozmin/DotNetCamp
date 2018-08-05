@@ -30,6 +30,7 @@ namespace GamesServer.BLL.Services
             {
                 new Claim(JwtRegisteredClaimNames.Sub, email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(ClaimTypes.NameIdentifier,user.Id)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
@@ -47,9 +48,9 @@ namespace GamesServer.BLL.Services
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public bool IsUserExists(Guid userId)
+        public bool IsUserExists(string userId)
         {
-            throw new NotImplementedException();
+            return _userManager.Users.Where(u => u.Id == userId)!=null;
         }
 
         //public bool IsUserExists(string userId)
